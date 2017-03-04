@@ -1,0 +1,9 @@
+{
+  "name": "wireless-outlet",
+  "version": "1.0.0",
+  "description": "Raspberry Pi powered wireless outlet",
+  "main": "index.js",
+  "scripts": { },
+  "author": "Richie Casto",
+  "license": "ISC"
+}
