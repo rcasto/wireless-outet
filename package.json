@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Raspberry Pi powered wireless outlet",
   "main": "index.js",
-  "scripts": { },
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "Richie Casto",
   "license": "ISC"
 }
