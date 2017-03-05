@@ -5,11 +5,13 @@ var router = express.Router();
 var outlets = [{
     name: 'Outlet 1',
     isOn: false,
-    pin: 10
+    pin: 10,
+    id: 0
 }, {
     name: 'Outlet 2',
     isOn: false,
-    pin: 11
+    pin: 11,
+    id: 1
 }];
 
 // Configure outlet pins

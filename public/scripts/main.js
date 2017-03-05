@@ -1,16 +1,9 @@
 (function () {
     function buildOutletSwitches(outlets) {
         var outletSwitchContainer = document.createElement('div');
-        outlets.forEach(function (outlet, i) {
+        outlets.forEach(function (outlet) {
             var outletSwitch = createOutletSwitch(outlet);
-            outletSwitch.querySelector('input').onclick = function (event) {
-                event.preventDefault();
-            };
-            outletSwitch.querySelector('.slider').onclick = function () {
-                Request.getJSON('/api/toggle/' + i, function (newOutlet) {
-                    setOutletSwitchState(newOutlet, outletSwitch);
-                });
-            };
+            addOutletSwitchHandlers(outlet, outletSwitch);
             outletSwitchContainer.appendChild(outletSwitch);
         });
         return outletSwitchContainer;
@@ -20,22 +13,55 @@
         var label = document.createElement('label');
         var span = document.createElement('span');
         var input = document.createElement('input');
-        var div = document.createElement('div');
+        var div = document.createElement('div'), outletSwitch;
         label.className = 'switch';
         input.type = 'checkbox';
         div.className = 'slider round';
+        div.tabIndex = 0;
         label.appendChild(span)
         label.appendChild(input)
         label.appendChild(div);
+        outletSwitch = {
+            switch: label,
+            components: { // quick access to elems inside
+                input: input,
+                slider: slider,
+                name: span
+            }
+        };
         if (outlet) {
-            setOutletSwitchState(outlet, label);
+            setOutletSwitchState(outlet, outletSwitch);
         }
-        return label;
+        return outletSwitch;
+    }
+
+    function addOutletSwitchHandlers(outlet, outletSwitch) {
+        var input = outletSwitch.querySelector('input');
+        var slider = outletSwitch.querySelector('.slider');
+        outletSwitch.components.input.onclick = function (event) {
+            event.preventDefault();
+        };
+        outletSwitch.components.slider.onclick = function () {
+           toggleSwitch(outletSwitch, outlet.id); 
+        };
+        createOutletSwitch.components.slider.onkeydown = function (event) {
+            if (event.keyCode === 13) {
+                toggleSwitch(outletSwitch, outlet.id);
+            }
+        };
+    }
+
+    function toggleSwitch(outletSwitch, id) {
+        outletSwitch.components.input.disabled = true;
+        Request.getJSON('/api/toggle/' + id, function (newOutlet) {
+            setOutletSwitchState(newOutlet, outletSwitch);
+        });
     }
 
     function setOutletSwitchState(outlet, outletSwitch) {
-        outletSwitch.querySelector('input').checked = outlet.isOn;
-        outletSwitch.querySelector('span').innerHTML = generateOutletStateString(outlet);
+        outletSwitch.components.input.disabled = false;
+        outletSwitch.components.input.checked = outlet.isOn;
+        outletSwitch.components.name.innerHTML = generateOutletStateString(outlet);
     }
 
     function generateOutletStateString(outlet) {

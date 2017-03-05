@@ -53,6 +53,9 @@ input:checked + .slider {
 input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
 }
+input:disabled + .slider {
+    opacity: 0.4;
+}
 input:checked + .slider:before {
     -ms-transform: translateX(276%) translateY(-50%);
     transform: translateX(276%) translateY(-50%);

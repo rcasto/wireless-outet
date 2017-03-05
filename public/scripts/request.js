@@ -6,7 +6,7 @@ var Request = (function () {
         var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('GET', url);
         xhr.onreadystatechange = function() {
-            if (xhr.readyState >3 && xhr.status === 200) {
+            if (xhr.readyState > 3 && xhr.status === 200) {
                 success && success(xhr.responseText);
             }
         };
