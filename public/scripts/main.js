@@ -42,7 +42,7 @@
         outletSwitch.components.slider.onclick = function () {
            toggleSwitch(outletSwitch, outlet.id); 
         };
-        createOutletSwitch.components.slider.onkeydown = function (event) {
+        outletSwitch.components.slider.onkeydown = function (event) {
             if (event.keyCode === 13) {
                 toggleSwitch(outletSwitch, outlet.id);
             }
