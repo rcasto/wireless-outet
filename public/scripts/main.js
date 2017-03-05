@@ -36,8 +36,6 @@
     }
 
     function addOutletSwitchHandlers(outlet, outletSwitch) {
-        var input = outletSwitch.querySelector('input');
-        var slider = outletSwitch.querySelector('.slider');
         outletSwitch.components.input.onclick = function (event) {
             event.preventDefault();
         };
