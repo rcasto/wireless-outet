@@ -6,11 +6,11 @@
             outletSwitch.querySelector('input').onclick = function (event) {
                 event.preventDefault();
             };
-            // outletSwitch.querySelector('.slider').onclick = function () {
-            //     Request.getJSON('/api/toggle/' + i, function (newOutlet) {
-            //         setOutletSwitchState(newOutlet, outletSwitch);
-            //     });
-            // };
+            outletSwitch.querySelector('.slider').onclick = function () {
+                Request.getJSON('/api/toggle/' + i, function (newOutlet) {
+                    setOutletSwitchState(newOutlet, outletSwitch);
+                });
+            };
             outletSwitchContainer.appendChild(outletSwitch);
         });
         return outletSwitchContainer;
