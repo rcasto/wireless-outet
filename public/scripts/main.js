@@ -1,8 +1,8 @@
 (function () {
     function buildOutletSwitches(outlets) {
-        var outletSwitchContainer = document.createElement('div'), outletSwitch;
+        var outletSwitchContainer = document.createElement('div');
         outlets.forEach(function (outlet, i) {
-            outletSwitch = createOutletSwitch(outlet);
+            var outletSwitch = createOutletSwitch(outlet);
             outletSwitch.querySelector('input').onclick = function (event) {
                 event.preventDefault();
             };
