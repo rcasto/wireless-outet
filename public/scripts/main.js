@@ -4,7 +4,7 @@
         outlets.forEach(function (outlet) {
             var outletSwitch = createOutletSwitch(outlet);
             addOutletSwitchHandlers(outlet, outletSwitch);
-            outletSwitchContainer.appendChild(outletSwitch);
+            outletSwitchContainer.appendChild(outletSwitch.switch);
         });
         return outletSwitchContainer;
     }
