@@ -25,7 +25,7 @@
             switch: label,
             components: { // quick access to elems inside
                 input: input,
-                slider: slider,
+                slider: div,
                 name: span
             }
         };
