@@ -21,6 +21,7 @@
         label.className = 'switch';
         span.innerHTML = outlet.name;
         input.type = 'checkbox';
+        input.checked = outlet.isOn;
         div.className = 'slider round';
         label.appendChild(span)
         label.appendChild(input)
