@@ -2,8 +2,35 @@
     box-sizing: border-box;
 }
 
+body {
+    border: 1px solid black;
+    padding: 16px;
+    margin: 12px;
+}
+
 h3 {
     text-align: center;
+    margin: 0 0 24px 0;
+}
+
+.success-highlight {
+    border: 3px solid #A1FFA1;
+}
+.error-highlight {
+    border: 3px solid #DCA7A7;
+}
+
+.error-alert {
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 12px;
+    background-color: #ffdddd;
+}
+.error-alert-message {
+    font-size: 1.5em;
+    margin-bottom: 6px;
 }
 
 /*
@@ -13,7 +40,8 @@ h3 {
     position: relative;
     display: block;
     margin: 0 auto;
-    width: 120px;
+    max-width: 120px;
+    width: 100%;
 }
 .switch:not(:last-of-type) {
     margin-bottom: 25px;
@@ -55,6 +83,7 @@ input:focus + .slider {
 }
 input:disabled + .slider {
     opacity: 0.4;
+    cursor: auto;
 }
 input:checked + .slider:before {
     -ms-transform: translateX(276%) translateY(-50%);

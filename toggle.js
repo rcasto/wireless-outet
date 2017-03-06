@@ -1,5 +1,13 @@
+// If we are running on windows don't import the real rpio, get the mock instead
+var isWindows = /^win/.test(process.platform);
+var rpioMock = {
+    write: function () {},
+    open: function () {},
+    close: function () {}
+};
+
 var express = require('express');
-var rpio = require('rpio');
+var rpio = isWindows ? rpioMock : require('rpio');
 
 var router = express.Router();
 var outlets = [{

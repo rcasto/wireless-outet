@@ -6,8 +6,12 @@ var Request = (function () {
         var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('GET', url);
         xhr.onreadystatechange = function() {
-            if (xhr.readyState > 3 && xhr.status === 200) {
-                success && success(xhr.responseText);
+            if (xhr.readyState > 3) {
+                if (xhr.status === 200) {
+                    success && success(xhr.responseText);
+                } else {
+                    failure && failure(xhr.responseText);
+                }
             }
         };
         xhr.onerror = failure;
