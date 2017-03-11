@@ -3,9 +3,10 @@
 
     function buildOutletSwitches(outlets) {
         var outletSwitchContainer = document.createElement('div');
-        outlets.forEach(function (outlet) {
-            var outletSwitch = createOutletSwitch(outlet);
-            addOutletSwitchHandlers(outlet, outletSwitch);
+        Object.keys(outlets).forEach(function (name) {
+            outlets[name].name = name;
+            var outletSwitch = createOutletSwitch(outlets[name]);
+            addOutletSwitchHandlers(outlets[name], outletSwitch);
             outletSwitchContainer.appendChild(outletSwitch.switch);
         });
         return outletSwitchContainer;
@@ -42,31 +43,31 @@
             event.preventDefault();
         };
         outletSwitch.components.slider.onclick = function () {
-           toggleSwitch(outletSwitch, outlet.id); 
+           toggleSwitch(outletSwitch, outlet.name); 
         };
         outletSwitch.components.slider.onkeydown = function (event) {
             if (event.keyCode === 13) {
-                toggleSwitch(outletSwitch, outlet.id);
+                toggleSwitch(outletSwitch, outlet.name);
             }
         };
     }
 
-    function toggleSwitch(outletSwitch, id) {
-        window.clearTimeout(outletSwitchTimeouts[id]);
+    function toggleSwitch(outletSwitch, name) {
+        window.clearTimeout(outletSwitchTimeouts[name]);
         outletSwitch.components.input.disabled = true;
         outletSwitch.components.slider.className = 'slider round';
-        outletSwitchTimeouts[id] = null;
-        Request.getJSON('/api/toggle/' + id, function (newOutlet) {
+        outletSwitchTimeouts[name] = null;
+        Request.getJSON('/api/toggle/?name=' + encodeURIComponent(name), function (newOutlet) {
             setOutletSwitchState(newOutlet, outletSwitch);
             outletSwitch.components.input.disabled = false;
             outletSwitch.components.slider.className = 'slider round success-highlight';
-            outletSwitchTimeouts[id] = window.setTimeout(function () {
+            outletSwitchTimeouts[name] = window.setTimeout(function () {
                 outletSwitch.components.slider.className = 'slider round';
             }, 2000);
         }, function () {
             outletSwitch.components.input.disabled = false;
             outletSwitch.components.slider.className = 'slider round error-highlight';
-            outletSwitchTimeouts[id] = window.setTimeout(function () {
+            outletSwitchTimeouts[name] = window.setTimeout(function () {
                 outletSwitch.components.slider.className = 'slider round';
             }, 2000);
         });
