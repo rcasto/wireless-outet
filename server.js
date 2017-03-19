@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var outletAPI = require('./lib/outlet/outlet-api');
+var outletAPI = require('./lib/outlet-api');
 
 var app = express();
 var port = process.env.PORT || 3000;
