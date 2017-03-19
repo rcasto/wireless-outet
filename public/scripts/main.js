@@ -4,9 +4,11 @@
     function buildOutletSwitches(outlets) {
         var outletSwitchContainer = document.createElement('div');
         Object.keys(outlets).forEach(function (name) {
-            outlets[name].name = name;
-            var outletSwitch = createOutletSwitch(outlets[name]);
-            addOutletSwitchHandlers(outlets[name], outletSwitch);
+            var outletName = {
+                name: name
+            };
+            var outletSwitch = createOutletSwitch(Object.assign(outlets[name], outletName));
+            addOutletSwitchHandlers(Object.assign(outlets[name], outletName), outletSwitch);
             outletSwitchContainer.appendChild(outletSwitch.switch);
         });
         return outletSwitchContainer;
@@ -58,7 +60,9 @@
         outletSwitch.components.slider.className = 'slider round';
         outletSwitchTimeouts[name] = null;
         Request.getJSON('/api/toggle/?name=' + encodeURIComponent(name), function (newOutlet) {
-            setOutletSwitchState(newOutlet, outletSwitch);
+            setOutletSwitchState(Object.assign(newOutlet, {
+                name: name
+            }), outletSwitch);
             outletSwitch.components.input.disabled = false;
             outletSwitch.components.slider.className = 'slider round success-highlight';
             outletSwitchTimeouts[name] = window.setTimeout(function () {
