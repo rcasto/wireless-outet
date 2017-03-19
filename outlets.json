@@ -1,0 +1,10 @@
+{
+    "Outlet 1": {
+        "isOn": false,
+        "pin": 10
+    },
+    "Outlet 2": {
+        "isOn": false,
+        "pin": 11
+    }
+}
