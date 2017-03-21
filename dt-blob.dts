@@ -1416,8 +1416,8 @@
                function = "input";
             }; // pin
             pin@p14 { function = "uart0";  termination = "no_pulling"; drive_strength_mA = < 8 >; }; // TX uart0
-            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; };
-            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; };
+            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
+            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
             pin@p28 { function = "input";   termination = "pull_up";    }; // I2C 0 SDA
             pin@p29 { function = "input";   termination = "pull_up";    }; // I2C 0 SCL
             pin@p32 { function = "output"; termination = "pull_down"; }; // Camera LED
@@ -1543,8 +1543,8 @@
                function = "input";
             }; // pin
             pin@p14 { function = "uart0";  termination = "no_pulling"; drive_strength_mA = < 8 >; }; // TX uart0
-            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; };
-            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; };
+            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
+            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
             pin@p28 { function = "i2c0";   termination = "pull_up";    }; // I2C 0 SDA
             pin@p29 { function = "i2c0";   termination = "pull_up";    }; // I2C 0 SCL
             pin@p34 { function = "input";  termination = "pull_up";    drive_strength_mA = < 8 >; };
@@ -1691,8 +1691,8 @@
                function = "input";
             }; // pin
             pin@p14 { function = "uart0";  termination = "no_pulling"; }; // TX uart0
-            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; };
-            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; };
+            pin@p15 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
+            pin@p17 { polarity = "active_low"; function = "output"; startup_state = "active"; termination = "no_pulling"; };
             pin@p47 { function = "output"; termination = "no_pulling"; polarity = "active_low"; }; // EMMC_ENABLE_N
             pin@p48 { function = "sdcard"; termination = "pull_up";    drive_strength_mA = < 8 >; }; // SD CLK
             pin@p49 { function = "sdcard"; termination = "pull_up";    drive_strength_mA = < 8 >; }; // SD CMD
