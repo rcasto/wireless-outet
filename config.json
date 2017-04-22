@@ -1,0 +1,5 @@
+{
+    "remoteProtocol": "ws",
+    "remoteHost": "my.home.local",
+    "remotePort": 80
+}
